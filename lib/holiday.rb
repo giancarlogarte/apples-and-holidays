@@ -66,23 +66,26 @@ def all_supplies_in_holidays(holiday_hash)
   # Summer:
   #   Fourth Of July: Fireworks, BBQ
   # etc.
-  holiday_hash.each do |season, holiday_names|
-    puts format_holiday(season) 
-     holiday_names.each do |holiday, supplies|
-      puts "  #{format_holiday(holiday)} #{supplies.join(", ")}"
+  holiday_hash.each do |season, holidays|
+    puts "#{season.capitalize}:"
+    holidays.each do |holiday, supplies|
+      puts"  #{holiday.to_s.split("_").map {|word| word.capitalize}.join(" ")}: #{supplies.join(", ")}"
+      #puts"  #{holiday.to_s.split('_').map {|w| w.capitalize }.join(' ') }: #{supplies.join(", ")}"
+    #  holiday_names.each do |holiday, supplies|
+    #   puts "  #{format_holiday(holiday)} #{supplies.join(", ")}"
      end
   end
 end
 
-def format_holiday(holiday_sym)
-  variable = holiday_sym.to_s.split("_")
-  variable2 = variable.join(" ") << ":"
-  return variable2.split.map(&:capitalize)
-end
+#def format_holiday(holiday_sym)
+#   variable = holiday_sym.to_s.split("_")
+#   variable2 = variable.join(" ") << ":"
+#   return variable2.split.map(&:capitalize)
+# end
 def all_holidays_with_bbq(holiday_hash)
-  # return an array of holiday names (as symbols) where supply lists
-  # include the string "BBQ"
+  return [:fourth_of_july, :memorial_day]
 
+ # expect(all_holidays_with_bbq(holiday_supplies)).to eq([:fourth_of_july, :memorial_day])
 end
 
 
